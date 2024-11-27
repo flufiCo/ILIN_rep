@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,13 +25,13 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
-        ProductsPage productsPage = new ProductsPage(driver);
+        productsPage = new ProductsPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
+   @AfterMethod(alwaysRun = true)
     public void close() {
         if (driver != null) {
-            driver.quit();
+        driver.quit();
         }
     }
 }

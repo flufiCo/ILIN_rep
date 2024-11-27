@@ -1,10 +1,10 @@
+package tests;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+
 
 public class LoginTest extends BaseTest {
 
@@ -14,8 +14,6 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce1");
         assertEquals(productsPage.getTitle(), "Products");
     }
-
-
     @Test
     public void emptyPasswordInputCheck() {
         loginPage.open();
@@ -23,6 +21,7 @@ public class LoginTest extends BaseTest {
         assertEquals(driver.findElement(By.xpath("//h3")).getText(),
                 "Epic sadface: Username and password do not match any user in this service");
     }
+
     @Test
     public void lockedOutUserInputCheck() {
         loginPage.open();
