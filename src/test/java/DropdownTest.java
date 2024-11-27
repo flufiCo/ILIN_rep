@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class TheThirdTest extends BaseTest {
+public class DropdownTest extends BaseTest {
 
     @Test
     public void checkSelectOption() {
@@ -19,6 +19,4 @@ public class TheThirdTest extends BaseTest {
         assertEquals(select.getFirstSelectedOption().getText(), "Option 1");
         //assertTrue(select.ge);
     }
-
-
 }
