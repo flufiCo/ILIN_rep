@@ -23,3 +23,4 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_INPUT).submit();
     }
 }
+1
