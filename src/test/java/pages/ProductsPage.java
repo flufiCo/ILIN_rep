@@ -21,4 +21,4 @@ public class ProductsPage {
     driver.findElement(addToCart).click();
     }
 }
-
+1234
