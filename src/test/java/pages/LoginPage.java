@@ -7,7 +7,7 @@ public class LoginPage extends BasePage {
 
     private final By USERNAME_INPUT = By.id("user-name");
     private final By PASSWORD_INPUT = By.id("password");
-    private final By LOGIN_INPUT = By.id("login-button");
+    private final By LOGIN_INPUT = By.id("login-button1");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -23,4 +23,3 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_INPUT).submit();
     }
 }
-1
