@@ -19,7 +19,7 @@ public class TheSecondTest extends BaseTest {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         String errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector(".error-message-container.error"))).getText();
         assertEquals(errorMessage, "Epic sadface: Username and password do not match any user in this service");
@@ -32,7 +32,7 @@ public class TheSecondTest extends BaseTest {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         boolean isPresent = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[text()='Sauce Labs Backpack']"))).isDisplayed();
         assertTrue(isPresent, "Sauce Labs Backpack button not found!");
