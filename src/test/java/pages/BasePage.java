@@ -16,3 +16,5 @@ public abstract class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
 }
+
+

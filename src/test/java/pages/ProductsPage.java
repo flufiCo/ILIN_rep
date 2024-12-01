@@ -54,3 +54,5 @@ public class ProductsPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TO_CART_BUTTONS));
     }
 }
+
+

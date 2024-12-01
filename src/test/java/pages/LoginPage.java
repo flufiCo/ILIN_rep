@@ -57,3 +57,4 @@ public class LoginPage extends BasePage {
         return errorElement.getText();
     }
 }
+
