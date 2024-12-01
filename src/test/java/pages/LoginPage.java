@@ -1,11 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
@@ -27,10 +26,8 @@ public class LoginPage extends BasePage {
         fullPasswordInput(password);
         clickSubmBtn();
         if (isErrorMessagePresent()) {
-            String errorMessage = getErrorMessage();
-            System.out.println("Ошибка при логине: " + errorMessage);
+            getErrorMessage();
         } else {
-            System.out.println("Логин успешен");
         }
     }
 
@@ -48,10 +45,9 @@ public class LoginPage extends BasePage {
 
     public boolean isErrorMessagePresent() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
             wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_MESSAGE));
             return true;
-        } catch (Exception e) {
+        } catch (TimeoutException e) {
             return false;
         }
     }

@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
-    static WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
         super(driver);
-        ProductsPage.driver = driver;
     }
 
     private final String ADD_TO_CART_PATTERN = "//div[text()='%s']//ancestor::div[@class='inventory_item']//button";
     private final By TITLE = By.cssSelector("[class='title']");
-    private final By TITLE2 = By.xpath("//*[text()='Products']");
+    private final By ADD_TO_CART_BUTTONS = By.xpath("//*[text()='Add to cart']");
+    private final By CART_LINK = By.xpath("//*[@class='shopping_cart_link']");
+    private final By PRODUCT_NAMES = By.cssSelector(".inventory_item_name");
 
     public String getTitle() {
         return driver.findElement(TITLE).getText();
@@ -28,30 +28,29 @@ public class ProductsPage extends BasePage {
         By addToCart = By.xpath(String.format(ADD_TO_CART_PATTERN, product));
         driver.findElement(addToCart).click();
     }
+
     public void addToCart(int index) {
-        driver.findElements(By.xpath("//*[text()='Add to cart']")).get(index).click();
+        driver.findElements(ADD_TO_CART_BUTTONS).get(index).click();
     }
 
     public boolean isDisp() {
-        driver.findElement(TITLE2).isDisplayed();
-        return true;
+        return driver.findElement(TITLE).isDisplayed();
     }
 
     public void openCart() {
-        driver.findElement(By.xpath("//*[@class='shopping_cart_link']")).click();
+        driver.findElement(CART_LINK).click();
     }
 
-    public static ArrayList<String> getProductsNames() {
-        List<WebElement> allProductsNames = driver.findElements(By.cssSelector(".inventory_item_name"));
+    public ArrayList<String> getProductsNames() {
+        List<WebElement> allProductsNames = driver.findElements(PRODUCT_NAMES);
         ArrayList<String> names = new ArrayList<>();
         for (WebElement product : allProductsNames) {
             names.add(product.getText());
         }
-    return names;
+        return names;
     }
 
     public void isOpened() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Add to cart']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_TO_CART_BUTTONS));
     }
 }
-

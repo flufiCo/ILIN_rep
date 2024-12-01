@@ -17,6 +17,7 @@ public class LoginTest extends BaseTest {
                 {"problem_user", "", "Epic sadface: Password is required"}
         };
     }
+    private final By MISTAKE_MESSAGE_NUMBER_3 = By.cssSelector("h3");
 
     @Test(dataProvider = "loginData")
     public void incorrectLogin(String user, String password, String errorMsg) {
@@ -37,7 +38,7 @@ public class LoginTest extends BaseTest {
     public void emptyPasswordInputCheck() {
         loginPage.open();
         loginPage.login("standard_user", " ");
-        assertEquals(driver.findElement(By.cssSelector("h3")).getText(),
+        assertEquals(driver.findElement(MISTAKE_MESSAGE_NUMBER_3).getText(),
                 "Epic sadface: Username and password do not match any user in this service");
     }
 
@@ -45,7 +46,7 @@ public class LoginTest extends BaseTest {
     public void lockedOutUserInputCheck() {
         loginPage.open();
         loginPage.login("locked_out_user", "secret_sauce");
-        assertEquals(driver.findElement(By.cssSelector("h3")).getText(),
+        assertEquals(driver.findElement(MISTAKE_MESSAGE_NUMBER_3).getText(),
                 "Epic sadface: Sorry, this user has been locked out.");
     }
 
